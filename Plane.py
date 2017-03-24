@@ -11,7 +11,7 @@ class Plane:
   velocity = Vector()
   tail_num = ""
   squawk_code = ""
-  planes_in_range = []
+
   
   
   def __init__(self, position, velocity, tail_num, squawk_code, planes_in_range):
@@ -27,5 +27,3 @@ class Plane:
   def update_velocity(self, new_velocity):
     self.velocity = new_velocity
     
-  def update_planes_in_range(self, planes_in_range):
-    self.planes_in_range = planes_in_range
