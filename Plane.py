@@ -9,17 +9,17 @@ import Vector
 class Plane:
   position = Vector() 
   velocity = Vector()
+  # In degrees
+  course = 0
+  speed = 65
   tail_num = ""
-  squawk_code = ""
 
   
   
-  def __init__(self, position, velocity, tail_num, squawk_code, planes_in_range):
+  def __init__(self, position, speed=65, course=0, vertical_speed=0, tail_num):
     self.position           = position
-    self.velocity           = velocity
+    self.velocity           = (speed * math.cosine(course), speed*math.sin(course), vertical_speed)
     self.tail_num           = tail_num
-    self.squawk_code        = squawk_code
-    self.planes_in_range    = planes_in_range
     
   def update_position(self):
     self.position = self.position + self.velocity

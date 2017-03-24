@@ -50,6 +50,7 @@ class Simulator:
     elif speed > 550:
       speed = 550
     
+<<<<<<< HEAD
     #course
     course = Random.randint(0,360)
     
@@ -66,13 +67,21 @@ class Simulator:
     
     number_spawned_planes += 1
 
+=======
+    entering = Random.Random()*self.MAP_SIZE[0]
+>>>>>>> 6be1ab386590cfe80dcca732b9945510fed72ba5
 
   
   def update_all_planes_positions(self):
     for plane in self.planes:
       plane.update_position()
+<<<<<<< HEAD
   
 
+=======
+    return 0
+       
+>>>>>>> 6be1ab386590cfe80dcca732b9945510fed72ba5
     
   def step(self):
     self.update_all_planes_positions()
