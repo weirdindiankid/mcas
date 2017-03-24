@@ -5,10 +5,6 @@ Created on Fri Mar 24 12:34:46 2017
 @author: vincentwahl
 """
 
-class Vector:
-    scale = 1
-    direction = [0.0, 0.0, 0.0]
-
 class Plane:
     position = [0.0, 0.0, 0.0]
     velocity = Vector(0.0, 0.0, 0.0, 0.0)
