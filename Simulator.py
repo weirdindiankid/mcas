@@ -6,16 +6,32 @@ Created on Fri Mar 24 14:37:38 2017
 """
 import Vector
 import Plane
+import Random
 
 class Simulator:
   
-  planes = []
-  simulated_map_size = []    
+  #CONSTANTS
+  MAP_SIZE = 400
+  DELTA_ALTITUDE_RANGE = (-6000, 6000)
+  
+  planes = []    
   time = 0
+  
+  def random_spawn_plane(self):
+    side = Random.choice(0,1,2,3) #0 = top, then clockwise
+    position = Vector()
     
-  def add_plane(self):
-    print("NYI")
+    if side == 0:
+      position.x = Random.Random()*MAP_SIZE
+      position.y = MAP_SIZE
+      position.z = Random.Random()*MAP_SIZE
     
+    
+    entering = Random.Random()*self.MAP_SIZE[0]
+    
+
+
+  
   def update_all_planes_positions(self):
     for plane in self.planes:
       plane.update_position()
