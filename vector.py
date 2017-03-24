@@ -31,6 +31,10 @@ class Vector:
 		"""
 		return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
 
+	def __sub__(self, other):
+		""" Returns the vector difference of self and other """
+		return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
+
 	def __repr__(self):
 		return "Vector (" + str(self.x) + ", " + str(self.y) + ", " + str(self.z) + ")"
 
