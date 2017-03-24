@@ -28,22 +28,13 @@ class Simulator:
     
     
     entering = Random.Random()*self.MAP_SIZE[0]
-    
-
 
   
   def update_all_planes_positions(self):
     for plane in self.planes:
       plane.update_position()
     return 0
-        
-  def update_all_planes_in_range_lists(self):
-    for plane in self.planes:
-      plane.update_planes_in_range
-    return 0
-    
-  def update_all_planes_velocities(self):
-    print("NYI")
+       
     
   def step(self):
     self.update_all_planes_positions()
