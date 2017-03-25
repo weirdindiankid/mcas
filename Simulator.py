@@ -13,16 +13,15 @@ class Simulator:
   
   #CONSTANTS
   MAP_SIZE = 400
-  MAP_SIZE_Z = 105600 #feet
 
   # Spawn Int.
   SPAWN_INTERVAL = 20
 
   # NM Foot conversion for position checks
-  LATERAL_SEPARATION_THRESHOLD = 0.3291577 # 2000 feet
-  VERTICAL_SEPARATION_THRESHOLD = 0.164579  # 1000 feet
-
-  DELTA_ALTITUDE_RANGE = (-2000, 2000)
+  SEPARATION_THRESHOLD_MAGNITUDE = 0.493736599
+  COLLISION_THRESHOLD_MAGNITUDE = 0.0493736599
+  #LATERAL_SEPARATION_THRESHOLD = 0.3291577 # 2000 feet
+  #VERTICAL_SEPARATION_THRESHOLD = 0.164579  # 1000 feet
 
   
   number_spawned_planes = 0
@@ -64,7 +63,7 @@ class Simulator:
     course = Random.randint(0,360)
     
     #vertical_speed
-    vertical_speed = Random.choice([-500, 500, 1000, -1000, 0])
+    vertical_speed = Random.choice([-4.93, 4.93, 9.87, -9.87, 0])
     
     #tail number
     tail_num = str(self.number_spawned_planes)
@@ -86,8 +85,8 @@ class Simulator:
         plane_dist = plane_dist.magnitude()
 
         # Actual thresholds in constants
-        if plane_dist < 12000:
-          if plane_dist < 100:
+        if plane_dist < self.SEPARATION_THRESHOLD_MAGNITUDE:
+          if plane_dist < self.COLLISION_THRESHOLD_MAGNITUDE:
             collisionDict[ str(self.planes[i].tail_num) + "--" + str(self.planes[i+1].tail_num) ] = plane_dist
           distanceDict[ str(self.planes[i].tail_num) + "--" + str(self.planes[i+1].tail_num) ] = plane_dist
     print(distanceDict)
