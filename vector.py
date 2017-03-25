@@ -29,6 +29,10 @@ class Vector:
 		"""
 			Returns the vector addition of self and other
 		"""
+		#print(other)
+
+		a = Vector(0,0,0)
+		
 		return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
 
 	def __sub__(self, other):
