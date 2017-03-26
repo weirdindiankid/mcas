@@ -21,7 +21,7 @@ class Plane:
     self.position           = position
     self.speed              = speed
     self.vertical_speed     = vertical_speed
-    self.velocity           = Vector(speed * math.sin(math.radians(course)), speed * math.cosine(math.radians(course)), vertical_speed)
+    self.velocity           = Vector(speed * math.sin(math.radians(course)), speed * math.cos(math.radians(course)), vertical_speed)
     self.tail_num           = tail_num
     
   def update_position(self):

@@ -39,10 +39,10 @@ pts = sum([ax.plot([], [], [], 'o', c=c)
            for c in colors], [])
 
 # prepare the axes limits
-ax.set_xlim((-3000, 3000))
-ax.set_ylim((-2000, 2000))
+ax.set_xlim((-25, 25))
+ax.set_ylim((-35, 35))
 #ax.set_zlim((5, 55))
-ax.set_zlim((-92141, 92141))
+ax.set_zlim((5, 55))
 
 # set point-of-view: specified by (altitude degrees, azimuth degrees)
 ax.view_init(30, 0)
@@ -64,8 +64,8 @@ def animate(i):
 
     for line, pt, xi in zip(lines, pts, x_t):
         x, y, z = xi[:i].T
-        #line.set_data(x, y)
-        #line.set_3d_properties(z)
+        line.set_data(x, y)
+        line.set_3d_properties(z)
 
         pt.set_data(x[-1:], y[-1:])
         pt.set_3d_properties(z[-1:])
