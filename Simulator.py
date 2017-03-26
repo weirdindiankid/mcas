@@ -5,7 +5,7 @@ Created on Fri Mar 24 14:37:38 2017
 @author: vincentwahl
 """
 
-from Vector import *
+from vector import *
 from Plane import *
 import numpy as np
 import sys

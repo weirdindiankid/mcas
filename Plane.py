@@ -4,7 +4,7 @@ Created on Fri Mar 24 14:44:06 2017
 
 @author: vincentwahl
 """
-from Vector import *
+from vector import *
 
 class Plane:
 
@@ -21,7 +21,7 @@ class Plane:
     self.position           = position
     self.speed              = speed
     self.vertical_speed     = vertical_speed
-    self.velocity           = Vector(speed * math.cos(course), speed * math.sin(course), vertical_speed)
+    self.velocity           = Vector(speed * math.sin(math.radians(course)), speed * math.cos(math.radians(course)), vertical_speed)
     self.tail_num           = tail_num
     
   def update_position(self):
