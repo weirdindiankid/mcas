@@ -7,9 +7,11 @@ Created on Fri Mar 24 14:37:38 2017
 
 from Vector import *
 from Plane import *
-import numpy
+import numpy as np
 import sys
 import random as Random
+
+
 
 class Simulator:
   
@@ -22,11 +24,14 @@ class Simulator:
   # NM Foot conversion for position checks
   SEPARATION_THRESHOLD_MAGNITUDE = 0.493736599
   COLLISION_THRESHOLD_MAGNITUDE = 0.0493736599
+  
+
 
   
   number_spawned_planes = 0
   planes = []    
-  time = 0
+  simTime = 0
+  number_of_RIP = 0
   
   def random_spawn_plane(self):
     #position    
@@ -53,7 +58,7 @@ class Simulator:
       position.z = rand2 * self.MAP_SIZE
     
     #speed
-    speed = int(numpy.random.normal(300, 50))
+    speed = int(np.random.normal(300, 50))
     
     if speed < 65:
       speed = 65
@@ -104,8 +109,9 @@ class Simulator:
           if plane_dist < self.COLLISION_THRESHOLD_MAGNITUDE:
             collisionDict[ str(self.planes[i].tail_num) + "--" + str(self.planes[i+1].tail_num) ] = plane_dist
           distanceDict[ str(self.planes[i].tail_num) + "--" + str(self.planes[i+1].tail_num) ] = plane_dist
-          print("Inappropriate separation: " + str(self.planes[i].tail_num) + "--" + str(self.planes[i+1].tail_num))
-          sys.exit(0)
+          #print("Inappropriate separation: " + str(self.planes[i].tail_num) + "--" + str(self.planes[i+1].tail_num))
+          self.number_of_RIP += 1
+          #sys.exit(0)
 
     # print(distanceDict)
     return (distanceDict, collisionDict)
@@ -121,23 +127,23 @@ class Simulator:
 
     self.update_all_planes_positions()
     #self.update_all_planes_in_range_lists()
-    if self.time % self.SPAWN_INTERVAL == 0:
+    if self.simTime % self.SPAWN_INTERVAL == 0:
       self.random_spawn_plane()
     self.distance_between_planes()
-    print("Num planes: " + str(len(self.planes)))
+    #print("Num planes: " + str(len(self.planes)))
     self.delete_planes()
-    self.time += 1
+    self.simTime += 1
 
+
+
+
+#SEEEEDS
 a = Simulator()
 for i in range(5000):
   a.step()
-  
-
-
-
-
-
-
+print("# of RIPs: "+ str(a.number_of_RIP))
+print("# of planes spawned: " + str(a.number_spawned_planes))
+print("# of planes at the end: " + str(len(a.planes)))
 
 
 
